@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply text-ink antialiased;
+    background: linear-gradient(180deg, #FDF4F1 0%, #F8E3DF 100%) fixed;
+  }
+  html[lang='ar'] body { font-family: 'Tajawal', sans-serif; }
+  html[lang='fr'] body { font-family: 'Lora', serif; }
+  html[lang='ar'] .font-display { font-family: 'Aref Ruqaa', serif; font-weight: 700; }
+  :focus-visible { outline: 2px solid #6B1F2D; outline-offset: 3px; }
+}
+
+.swiper-button-prev, .swiper-button-next {
+  width: 44px; height: 44px; border-radius: 9999px; background: #fff; color: #6B1F2D;
+  box-shadow: 0 10px 30px -14px rgba(107,31,45,.4);
+}
+.swiper-button-prev:after, .swiper-button-next:after { font-size: 15px; font-weight: 700; }
+.swiper { --swiper-pagination-color: #A9707A; --swiper-pagination-bullet-inactive-color: #EBC8C8; --swiper-pagination-bullet-inactive-opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
