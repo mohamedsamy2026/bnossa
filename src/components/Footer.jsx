@@ -22,7 +22,7 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <Icon name="mail" className="hidden h-14 w-14 sm:block" />
             <div>
-              <p className="font-display text-3xl">{t('subscribe.title')}</p>
+              <p className="font-display text-3xl mb-2">{t('subscribe.title')}</p>
               <p className="max-w-xs text-sm text-white/90">{t('subscribe.text')}</p>
             </div>
           </div>
@@ -38,7 +38,7 @@ export default function Footer() {
       </div>
       <div className="flex flex-col items-center justify-between gap-3 bg-cream px-6 py-4 text-sm text-wine sm:flex-row sm:px-10">
         <img src={plate} alt="Nossa" className="h-10 w-auto" />
-        <p>© {new Date().getFullYear()} b Nossa — {t('footer.rights')}</p>
+        <p className="font-bold">© {new Date().getFullYear()} b Nossa — {t('footer.rights')}</p>
       </div>
     </footer>
   )

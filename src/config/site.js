@@ -7,7 +7,7 @@ export const SITE = {
   phone: { countryCode: '20', number: '01115083459' },
   currency: { ar: 'ج.م', fr: 'EGP' },
   // سيبيها فاضية لحد ما تحطي الروابط
-  socials: { youtube: '', tiktok: '', instagram: '', pinterest: '' },
+  socials: { youtube: '', tiktok: 'https://vm.tiktok.com/ZS9f2dqd4gSkX-Hiodd/', instagram: '' },
 }
 
 export const toIntl = (cc, n) => cc + String(n).replace(/\D/g, '').replace(/^0+/, '')
