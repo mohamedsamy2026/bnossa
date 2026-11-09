@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useI18n } from '../context/LangContext'
 import { subscribeLink } from '../utils/whatsapp'
-import plate from '../assets/logo-plate.png'
+import plate from '../assets/logo-plate.webp'
 import { Branch, Icon } from './ui'
 import { Socials } from './Header'
 
