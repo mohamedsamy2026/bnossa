@@ -26,10 +26,10 @@ export default function Footer() {
               <p className="max-w-xs text-sm text-white/90">{t('subscribe.text')}</p>
             </div>
           </div>
-          <form onSubmit={submit} className="flex w-full max-w-xl items-center gap-2 justify-self-center rounded-full bg-cream p-1.5 lg:max-w-lg">
+          <form onSubmit={submit} className="flex w-full min-w-0 max-w-xl items-center gap-1.5 justify-self-center rounded-full bg-cream p-1.5 lg:max-w-lg">
             <input type="tel" inputMode="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder={t('subscribe.placeholder')} dir="ltr"
-              className="min-w-0 flex-1 bg-transparent px-4 text-sm text-ink outline-none placeholder:text-ink/50" aria-label={t('subscribe.placeholder')} />
-            <button className="flex items-center gap-2 rounded-full bg-blush px-5 py-2.5 text-sm font-medium text-wine transition hover:bg-rose">
+              className="w-0 min-w-0 flex-1 bg-transparent px-2 text-xs text-ink outline-none sm:px-4 sm:text-sm placeholder:text-ink/50" aria-label={t('subscribe.placeholder')} />
+            <button className="flex shrink-0 items-center gap-1 rounded-full bg-blush px-3 py-2.5 text-xs font-medium text-wine transition hover:bg-rose sm:gap-2 sm:px-5 sm:text-sm">
               {t('subscribe.button')}<Icon name="whatsapp" className="h-4 w-4" />
             </button>
           </form>
@@ -38,7 +38,7 @@ export default function Footer() {
       </div>
       <div className="flex flex-col items-center justify-between gap-3 bg-cream px-6 py-4 text-sm text-wine sm:flex-row sm:px-10">
         <img src={plate} alt="Nossa" className="h-10 w-auto" />
-        <p className="font-bold">© {new Date().getFullYear()} b Nossa — {t('footer.rights')}</p>
+        <p className="text-center font-bold">© {new Date().getFullYear()} b Nossa — {t('footer.rights')}</p>
       </div>
     </footer>
   )

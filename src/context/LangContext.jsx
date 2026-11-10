@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, useCallback } from 'react'
+import { createContext, useContext, useLayoutEffect, useState, useCallback } from 'react'
 import { translations } from '../config/translations'
 import { SITE } from '../config/site'
 
@@ -8,7 +8,7 @@ export function LangProvider({ children }) {
   const [lang, setLang] = useState(() => localStorage.getItem('bnossa-lang') || 'ar') // الافتراضي: عربي
   const dir = lang === 'ar' ? 'rtl' : 'ltr'
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.lang = lang
     document.documentElement.dir = dir
     try { localStorage.setItem('bnossa-lang', lang) } catch { /* ignore */ }

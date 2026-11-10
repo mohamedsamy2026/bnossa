@@ -99,9 +99,9 @@ export function SectionTitle({ children, className = '' }) {
   return (
     <div className={`mb-8 flex flex-col items-center ${className}`}>
       <div className="flex w-full items-center justify-center gap-4 sm:gap-6">
-        <span className="h-px w-12 bg-wine/40 sm:w-32 md:w-48" />
-        <h2 className="font-display text-4xl text-wine sm:text-5xl">{children}</h2>
-        <span className="h-px w-12 bg-wine/40 sm:w-32 md:w-48" />
+        <span className="h-px w-6 min-w-0 flex-1 bg-wine/40 sm:max-w-32 md:max-w-48" />
+        <h2 className="min-w-0 max-w-full text-center font-display text-[clamp(1.65rem,6vw,3rem)] leading-tight text-wine">{children}</h2>
+        <span className="h-px w-6 min-w-0 flex-1 bg-wine/40 sm:max-w-32 md:max-w-48" />
       </div>
       <Heart className="mt-1 h-5 w-5 text-wine" />
     </div>

@@ -29,7 +29,7 @@ export default function ProductCard({ p }) {
   return (
     <article
       onClick={go}
-      className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-[28px] bg-white/75 shadow-soft ring-1 ring-rose/50 transition hover:shadow-lift"
+      className="group relative flex h-full min-w-0 cursor-pointer flex-col overflow-hidden rounded-[28px] bg-white/75 shadow-soft ring-1 ring-rose/50 transition hover:shadow-lift"
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-blush">
         <img
@@ -57,9 +57,9 @@ export default function ProductCard({ p }) {
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col gap-3 p-4">
+      <div className="flex min-w-0 flex-1 flex-col gap-3 p-4">
         <div>
-          <h3 className="font-medium text-wine">{p.name[lang]}</h3>
+          <h3 className="break-words font-medium text-wine">{p.name[lang]}</h3>
           <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-ink/75">
             {p.desc[lang]}
           </p>

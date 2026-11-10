@@ -129,8 +129,8 @@ function Collection() {
         ))}
 
         {/* Custom Order Card */}
-        <div className="relative flex aspect-[4/3] flex-col items-center justify-center gap-2 overflow-hidden rounded-3xl bg-rose/60 p-2 text-center text-wine shadow-soft sm:gap-4 sm:p-4">
-          <p className="font-display text-lg font-bold leading-tigh  min-[400px]:text-3xl sm:leading-snug lg:text-4xl">
+        <div className="relative flex aspect-[4/3] min-w-0 flex-col items-center justify-center gap-2 overflow-hidden rounded-3xl bg-rose/60 p-2 text-center text-wine shadow-soft sm:gap-4 sm:p-4">
+          <p className="font-display text-xl font-bold leading-tight min-[400px]:text-2xl sm:text-3xl sm:leading-snug lg:text-4xl">
             {t("collection.ctaText")}
           </p>
 
@@ -138,14 +138,14 @@ function Collection() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center mt-3 justify-center rounded-full bg-wine px-3 py-1.5 text-[13px] font-medium text-white transition-all duration-300 hover:-translate-y-1 hover:bg-mauve hover:shadow-lg sm:mt-3 sm:px-8 sm:py-3 min-[400px]:text-base"
+            className="inline-flex max-w-full items-center justify-center rounded-full bg-wine px-3 py-1.5 text-center text-[10px] font-medium text-white transition-all duration-300 hover:-translate-y-1 hover:bg-mauve hover:shadow-lg min-[400px]:text-xs sm:mt-3 sm:px-8 sm:py-3 sm:text-base"
           >
             {t("collection.cta")}
           </a>
 
           <Yarn
             tail
-            className="absolute bottom-2 end-3 h-10 w-auto opacity-70 max-[430px]:hidden block"
+            className="absolute bottom-2 end-3 hidden h-10 w-auto opacity-70 sm:block"
           />
         </div>
       </div>
@@ -154,7 +154,7 @@ function Collection() {
 }
 
 function Products() {
-  const { t, lang } = useI18n();
+  const { t, lang, dir } = useI18n();
   const [cat, setCat] = useState("all");
   const list = useMemo(
     () => (cat === "all" ? products : products.filter((p) => p.cat === cat)),
@@ -265,6 +265,9 @@ function Products() {
         >
           <Swiper
             key={`${lang}-${cat}`}
+            dir={dir}
+            observer={true}
+            observeParents={true}
             onSwiper={(s) => {
               swiperRef.current = s;
               state.current = { hover: false, lock: false };
@@ -289,7 +292,7 @@ function Products() {
             }}
           >
             {list.map((p) => (
-              <SwiperSlide key={p.id} className="!h-auto pb-2">
+              <SwiperSlide key={p.id} className="!h-auto !min-w-0 pb-2">
                 <ProductCard p={p} />
               </SwiperSlide>
             ))}
@@ -319,9 +322,9 @@ function About() {
           <Flowers className="absolute -start-2 top-0 h-32 w-28" />
         </div>
         <div className="text-wine">
-          <h2 className="flex items-center gap-2 font-display text-4xl sm:text-5xl">
+          <h2 className="flex items-center gap-2 font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
             {t("about.title")}
-            <Heart className="h-6 w-6" />
+            <Heart className="h-4 w-4 shrink-0 sm:h-5 sm:w-5 md:h-6 md:w-6" />
           </h2>
           <p className="mt-4 max-w-md leading-loose text-ink/90">
             {t("about.text")}
@@ -422,8 +425,9 @@ function Faq() {
 
 function Contact() {
   const { t } = useI18n();
+  const { lang } = useI18n();
   const hello = waLink(
-    t("hero.sub") === "Fait main avec passion"
+    lang === "fr"
       ? "Bonjour b Nossa 👋"
       : "مرحبًا b Nossa 👋",
   );

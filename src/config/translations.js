@@ -70,18 +70,18 @@ export const translations = {
     langName: 'العربية',
     tagline: 'Crochet avec amour',
     topbar: { love: 'Fait main avec amour', creations: 'Créations au crochet', delivery: 'Livraison rapide' },
-    nav: { home: 'Accueil', shop: 'Boutique', about: 'À propos', how: 'Comment ça marche', contact: 'Contact', all: 'Tous les produits', menu: 'Menu' },
+    nav: { home: 'Accueil', shop: 'Boutique', about: 'À propos', how: 'Comment ça marche', contact: 'Contactez-nous', all: 'Tous les produits', menu: 'Menu' },
     search: { placeholder: 'Rechercher un sac...', none: 'Aucun résultat. Essayez un autre mot.', all: 'Voir tous les résultats' },
     hero: {
       kicker: 'Plus que du crochet...', sub: 'Fait main avec passion',
       text: 'Découvrez nos sacs uniques au crochet, réalisés avec soin pour ajouter une touche d’élégance et de chaleur à votre style.',
-      cta: 'Acheter',
+      cta: 'Acheter maintenant',
     },
     features: { quality: 'Qualité premium', love: 'Fait avec amour', gift: 'Cadeau idéal', delivery: 'Livraison rapide' },
-    collection: { title: 'Notre collection', ctaText: 'Ajoutez une touche de beauté artisanale à votre vie', cta: 'Voir la collection' },
+    collection: { title: 'Notre collection', ctaText: 'Commandez selon vos envies', cta: 'Commander maintenant' },
     products: { title: 'Nos produits', all: 'Tous', empty: 'Pas encore de produits dans cette catégorie. Bientôt 🌸' },
     product: {
-      order: 'Commander', add: 'Ajouter au panier', added: 'Ajouté', readMore: 'Lire la suite', qty: 'Quantité',
+      order: 'Commander le produit', add: 'Ajouter au panier', added: 'Ajouté', readMore: 'Lire la suite', qty: 'Quantité',
       total: 'Total', related: 'Vous aimerez aussi', back: 'Retour à la boutique', notFound: 'Produit introuvable',
       orderNote: 'Commande via WhatsApp — sans inscription ni compte.',
     },
@@ -116,7 +116,7 @@ export const translations = {
     faq: {
       title: 'Questions fréquentes',
       items: [
-        { q: 'Comment commander ?', a: 'Cliquez sur « Commander » ou ajoutez des produits au panier puis « Tout commander ». Un message WhatsApp prêt s’ouvre.' },
+        { q: 'Comment commander ?', a: 'Cliquez sur « Commander le produit » ou ajoutez des produits au panier puis « Tout commander sur WhatsApp ». Un message WhatsApp prêt s’ouvre.' },
         { q: 'Dois-je créer un compte ?', a: 'Non, pas d’inscription ni de compte. Tout se passe sur WhatsApp.' },
         { q: 'Comment se font le paiement et la livraison ?', a: 'Nous convenons ensemble du paiement et de la livraison dans la conversation WhatsApp.' },
         { q: 'Couleurs ou modèle sur mesure ?', a: 'Demandez-nous sur WhatsApp, nous verrons ce qui est possible.' },
@@ -125,8 +125,8 @@ export const translations = {
     },
     contact: { title: 'Contactez-nous', text: 'Une question ou envie de commander ? Écrivez-nous sur WhatsApp, nous répondons au plus vite.', whatsapp: 'WhatsApp', call: 'Appeler' },
     subscribe: {
-      title: 'Restez inspirée !', text: 'Laissez votre numéro et recevez nos offres et nouveautés sur WhatsApp.',
-      placeholder: 'Numéro WhatsApp', button: 'S’inscrire',
+      title: 'Restez informée !', text: 'Laissez votre numéro et recevez nos offres et nouveautés sur WhatsApp.',
+      placeholder: 'Numéro WhatsApp', button: 'S’abonner',
     },
     shop: { title: 'Boutique', results: 'produit(s)', empty: 'Aucun produit correspondant.', reset: 'Voir tous les produits', searchFor: 'Résultats pour' },
     footer: { rights: 'Tous droits réservés' },
