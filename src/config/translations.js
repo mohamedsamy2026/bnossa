@@ -11,7 +11,8 @@ export const translations = {
       cta: 'تسوق الآن',
     },
     features: { quality: 'جودة عالية', love: 'صُنع بحب', gift: 'هدية مثالية', delivery: 'توصيل سريع' },
-    collection: { title: 'مجموعتنا', ctaText: 'أضيفي لمسة من الجمال اليدوي لحياتك', cta: 'تسوق المجموعة' },
+    collection: {
+      title: 'مجموعتنا', ctaText: 'اطلب حسب رغبتك', cta: 'اطلب الآن',},
     products: { title: 'منتجاتنا', all: 'الكل', empty: 'مفيش منتجات في التصنيف ده لسه. هنضيف قريب 🌸' },
     product: {
       order: 'اطلب المنتج', add: 'أضف للسلة', added: 'تمت الإضافة', readMore: 'اقرأ المزيد', qty: 'الكمية',

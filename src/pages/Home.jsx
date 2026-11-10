@@ -52,17 +52,6 @@ function Hero() {
               {t("hero.cta")}
               <Icon name="arrow" className="h-5 w-5" />
             </Link>
-
-            {/* زر الطلب حسب الرغبة */}
-            <a
-              href="https://wa.me/201115083459?text=مرحباً، أريد طلب منتج كروشيه بتصميم خاص حسب رغبتي 🌸"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-mauve bg-transparent px-7 py-3 font-medium text-wine transition-all duration-300 hover:-translate-y-1 hover:bg-mauve hover:text-white"
-            >
-              <Heart className="h-5 w-5" />
-              اطلب حسب رغبتك
-            </a>
           </div>
         </div>
         <div className="relative min-h-80 overflow-hidden md:min-h-[460px] md:rounded-ss-[55%_70%] md:rounded-es-[38%_30%]">
@@ -106,9 +95,18 @@ function Features() {
 
 function Collection() {
   const { t, lang } = useI18n();
+
+  const whatsappMessage =
+    "مرحباً، أريد طلب منتج كروشيه بتصميم خاص حسب رغبتي 🌸";
+
+  const whatsappLink = `https://wa.me/201115083459?text=${encodeURIComponent(
+    whatsappMessage,
+  )}`;
+
   return (
     <section className="mx-auto max-w-7xl px-4 pt-14 sm:px-8">
       <SectionTitle>{t("collection.title")}</SectionTitle>
+
       <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3">
         {categories.map((c) => (
           <Link
@@ -118,35 +116,43 @@ function Collection() {
           >
             <img
               src={c.img}
-              alt=""
+              alt={c.name[lang]}
               loading="lazy"
               className="h-full w-full object-cover transition duration-700 [@media(hover:hover)]:group-hover:scale-105"
             />
+
             <span className="absolute bottom-3 start-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-cream/95 px-5 py-2 text-sm text-wine rtl:translate-x-1/2">
               {c.name[lang]}
               <Icon name="arrow" className="h-4 w-4" />
             </span>
           </Link>
         ))}
-        <div className="relative flex aspect-[4/3] flex-col items-center justify-center gap-4 overflow-hidden rounded-3xl bg-rose/60 p-4 text-center text-wine shadow-soft">
-          <p className="font-display text-2xl leading-snug sm:text-3xl">
+
+        {/* Custom Order Card */}
+        <div className="relative flex aspect-[4/3] flex-col items-center justify-center gap-2 overflow-hidden rounded-3xl bg-rose/60 p-2 text-center text-wine shadow-soft sm:gap-4 sm:p-4">
+          <p className="font-display text-lg font-bold leading-tigh  min-[400px]:text-3xl sm:leading-snug lg:text-4xl">
             {t("collection.ctaText")}
           </p>
-          <Link
-            to="/shop"
-            className="rounded-full bg-wine px-5 py-2 text-sm text-white transition hover:bg-mauve"
+
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center mt-3 justify-center rounded-full bg-wine px-3 py-1.5 text-[13px] font-medium text-white transition-all duration-300 hover:-translate-y-1 hover:bg-mauve hover:shadow-lg sm:mt-3 sm:px-8 sm:py-3 min-[400px]:text-base"
           >
             {t("collection.cta")}
-          </Link>
+          </a>
+
           <Yarn
             tail
-            className="absolute bottom-2 end-3 hidden h-10 w-auto opacity-70 sm:block"
+            className="absolute bottom-2 end-3 h-10 w-auto opacity-70 max-[430px]:hidden block"
           />
         </div>
       </div>
     </section>
   );
 }
+
 function Products() {
   const { t, lang } = useI18n();
   const [cat, setCat] = useState("all");
