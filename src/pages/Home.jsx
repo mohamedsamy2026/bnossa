@@ -43,13 +43,27 @@ function Hero() {
           <p className="mt-4 max-w-sm leading-relaxed text-ink/90">
             {t("hero.text")}
           </p>
-          <Link
-            to="/shop"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-mauve px-8 py-3 font-medium text-white shadow-soft transition hover:bg-wine"
-          >
-            {t("hero.cta")}
-            <Icon name="arrow" className="h-5 w-5" />
-          </Link>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            {/* زر التسوق */}
+            <Link
+              to="/shop"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-mauve px-8 py-3 font-medium text-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:bg-wine"
+            >
+              {t("hero.cta")}
+              <Icon name="arrow" className="h-5 w-5" />
+            </Link>
+
+            {/* زر الطلب حسب الرغبة */}
+            <a
+              href="https://wa.me/201115083459?text=مرحباً، أريد طلب منتج كروشيه بتصميم خاص حسب رغبتي 🌸"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-mauve bg-transparent px-7 py-3 font-medium text-wine transition-all duration-300 hover:-translate-y-1 hover:bg-mauve hover:text-white"
+            >
+              <Heart className="h-5 w-5" />
+              اطلب حسب رغبتك
+            </a>
+          </div>
         </div>
         <div className="relative min-h-80 overflow-hidden md:min-h-[460px] md:rounded-ss-[55%_70%] md:rounded-es-[38%_30%]">
           <img

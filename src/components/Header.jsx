@@ -6,6 +6,7 @@ import { SITE } from "../config/site";
 import { categories } from "../data/products";
 import { searchProducts } from "../utils/search";
 import { Icon, Yarn } from "./ui";
+import plate from '../assets/logo-plate.webp'
 
 export function Socials({ className = "", size = "h-5 w-5" }) {
   return (
@@ -147,7 +148,7 @@ function SearchBox({ className = "" }) {
   );
 }
 
-export function Logo({ className = "" }) {
+export function Logo({ className = "w-32" }) {
   const { t } = useI18n();
   return (
     <Link
@@ -155,7 +156,8 @@ export function Logo({ className = "" }) {
       aria-label="b Nossa"
       className={`flex flex-col items-center leading-none text-wine  ${className}`}
     >
-      <span className="flex items-center gap-2">
+      <img src={plate} alt="" />
+      {/* <span className="flex items-center gap-2">
         <span className="font-brand text-5xl sm:text-6xl" dir="ltr">
           b Nossa
         </span>
@@ -164,7 +166,7 @@ export function Logo({ className = "" }) {
       </span>
       <span className="mt-1 flex items-center gap-1 text-xs sm:text-sm">
         {t("tagline")} <Icon name="heart" className="h-3.5 w-3.5" />
-      </span>
+      </span> */}
     </Link>
   );
 }
