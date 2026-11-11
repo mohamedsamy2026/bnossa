@@ -1,10 +1,11 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
-import { getProduct } from '../data/products'
+import { useStore } from './StoreContext'
 
 const Ctx = createContext(null)
 const KEY = 'bnossa-cart'
 
 export function CartProvider({ children }) {
+  const {getProduct}=useStore()
   const [items, setItems] = useState(() => {
     try { return JSON.parse(localStorage.getItem(KEY)) || [] } catch { return [] }
   })
@@ -26,7 +27,7 @@ export function CartProvider({ children }) {
       remove: (id) => setItems((cur) => cur.filter((i) => i.id !== id)),
       clear: () => setItems([]),
     }
-  }, [items, open])
+  }, [items, open, getProduct])
 
   return <Ctx.Provider value={api}>{children}</Ctx.Provider>
 }

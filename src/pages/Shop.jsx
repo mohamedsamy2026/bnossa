@@ -1,18 +1,19 @@
 import { useMemo } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useI18n } from '../context/LangContext'
-import { categories } from '../data/products'
+import { useStore } from '../context/StoreContext'
 import { searchProducts } from '../utils/search'
 import ProductCard from '../components/ProductCard'
 import { SectionTitle } from '../components/ui'
 
 export default function Shop() {
   const { t, lang } = useI18n()
+  const {categories,products}=useStore()
   const [params, setParams] = useSearchParams()
   const q = params.get('q') || ''
   const cat = params.get('cat') || 'all'
 
-  const list = useMemo(() => searchProducts(q).filter((p) => cat === 'all' || p.cat === cat), [q, cat])
+  const list = useMemo(() => searchProducts(q,products,categories).filter((p) => cat === 'all' || p.cat === cat), [q, cat, products, categories])
   const pick = (id) => {
     const next = new URLSearchParams(params)
     id === 'all' ? next.delete('cat') : next.set('cat', id)

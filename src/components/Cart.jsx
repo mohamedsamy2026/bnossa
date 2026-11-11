@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useI18n } from '../context/LangContext'
 import { useCart } from '../context/CartContext'
+import { logOrder } from '../lib/supabase'
 import { cartOrderLink } from '../utils/whatsapp'
 import { Icon, Qty } from './ui'
 
@@ -14,7 +15,7 @@ export default function Cart() {
     return () => window.removeEventListener('keydown', h)
   }, [setOpen])
 
-  const orderAll = () => window.open(cartOrderLink(lang, lines), '_blank', 'noopener')
+  const orderAll = () => { if(!lines.length)return; window.open(cartOrderLink(lang, lines), '_blank', 'noopener'); logOrder('cart',lines) }
 
   return (
     <>

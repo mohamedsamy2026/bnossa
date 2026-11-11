@@ -2,11 +2,13 @@ import { useState } from 'react'
 import { useI18n } from '../context/LangContext'
 import { subscribeLink } from '../utils/whatsapp'
 import plate from '../assets/logo-plate.webp'
+import { useStore } from '../context/StoreContext'
 import { Branch, Icon } from './ui'
 import { Socials } from './Header'
 
 export default function Footer() {
   const { t, lang } = useI18n()
+  const {settings}=useStore()
   const [phone, setPhone] = useState('')
   const submit = (e) => {
     e.preventDefault()
@@ -37,7 +39,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="flex flex-col items-center justify-between gap-3 bg-cream px-6 py-4 text-sm text-wine sm:flex-row sm:px-10">
-        <img src={plate} alt="Nossa" className="h-10 w-auto" />
+        <img src={settings.logo_url || plate} alt="Nossa" className="h-10 w-auto" />
         <p className="text-center font-bold">© {new Date().getFullYear()} b Nossa — {t('footer.rights')}</p>
       </div>
     </footer>

@@ -6,6 +6,7 @@ import Cart from './components/Cart'
 import Home from './pages/Home'
 import Shop from './pages/Shop'
 import Product from './pages/Product'
+import Admin from './admin/Admin'
 
 function ScrollManager() {
   const { pathname, hash } = useLocation()
@@ -20,6 +21,8 @@ function ScrollManager() {
 }
 
 export default function App() {
+  const {pathname}=useLocation()
+  if(pathname.startsWith('/admin'))return <><ScrollManager/><Routes><Route path="/admin/*" element={<Admin/>}/></Routes></>
   return (
     <div className="min-h-screen overflow-x-clip">
       <ScrollManager />

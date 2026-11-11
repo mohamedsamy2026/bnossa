@@ -2,13 +2,15 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useI18n } from "../context/LangContext";
 import { useCart } from "../context/CartContext";
-import { getCategory } from "../data/products";
+import { useStore } from "../context/StoreContext";
+import { logOrder } from "../lib/supabase";
 import { productOrderLink } from "../utils/whatsapp";
 import { Icon, Qty } from "./ui";
 
 export default function ProductCard({ p }) {
   const { t, lang, money } = useI18n();
   const { add } = useCart();
+  const {getCategory}=useStore();
   const nav = useNavigate();
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
@@ -24,6 +26,7 @@ export default function ProductCard({ p }) {
   const order = (e) => {
     e.stopPropagation();
     window.open(productOrderLink(lang, p, qty), "_blank", "noopener");
+    logOrder("direct",[{p,qty}]);
   };
 
   return (

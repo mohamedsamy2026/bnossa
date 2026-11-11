@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useI18n } from "../context/LangContext";
 import { SITE, waLink, telLink } from "../config/site";
-import { categories, products } from "../data/products";
+import { useStore } from "../context/StoreContext";
 import ProductCard from "../components/ProductCard";
 import {
   Branch,
@@ -22,6 +22,7 @@ import aboutImg from "../assets/p3.jpg";
 
 function Hero() {
   const { t } = useI18n();
+  const {settings}=useStore();
   return (
     <section className="relative overflow-hidden">
       <Branch className="absolute -start-6 top-10 hidden h-64 opacity-80 lg:block" />
@@ -56,9 +57,7 @@ function Hero() {
 
             {/* زر الطلب حسب الرغبة */}
             <a
-              href={`https://wa.me/201115083459?text=${encodeURIComponent(
-                "مرحباً، أريد طلب منتج كروشيه بتصميم خاص حسب رغبتي 🌸",
-              )}`}
+              href={waLink("مرحباً، أريد طلب منتج كروشيه بتصميم خاص حسب رغبتي 🌸")}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-mauve bg-transparent px-7 py-3 font-medium text-wine transition-all duration-300 hover:-translate-y-1 hover:bg-mauve hover:text-white"
@@ -70,7 +69,7 @@ function Hero() {
         </div>
         <div className="relative min-h-80 overflow-hidden md:min-h-[460px] md:rounded-ss-[55%_70%] md:rounded-es-[38%_30%]">
           <img
-            src={heroImg}
+            src={settings.hero_url || heroImg}
             alt="b Nossa"
             className="absolute inset-0 h-full w-full object-cover object-[50%_62%]"
           />
@@ -109,13 +108,12 @@ function Features() {
 
 function Collection() {
   const { t, lang } = useI18n();
+  const {categories}=useStore();
 
   const whatsappMessage =
     "مرحباً، أريد طلب منتج كروشيه بتصميم خاص حسب رغبتي 🌸";
 
-  const whatsappLink = `https://wa.me/201115083459?text=${encodeURIComponent(
-    whatsappMessage,
-  )}`;
+  const whatsappLink = waLink(whatsappMessage);
 
   return (
     <section className="mx-auto max-w-7xl px-4 pt-14 sm:px-8">
@@ -169,6 +167,7 @@ function Collection() {
 
 function Products() {
   const { t, lang, dir } = useI18n();
+  const {categories,products}=useStore();
   const [cat, setCat] = useState("all");
   const list = useMemo(
     () => (cat === "all" ? products : products.filter((p) => p.cat === cat)),
@@ -412,12 +411,14 @@ function Why() {
 }
 
 function Faq() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+  const {faqs,settings}=useStore();
+  const items = settings.imported ? faqs.map(x=>({q:lang==='fr'?(x.question_fr||x.question_ar):x.question_ar,a:lang==='fr'?(x.answer_fr||x.answer_ar):x.answer_ar})) : t("faq.items");
   return (
     <section className="mx-auto max-w-3xl px-4 pt-20 sm:px-8">
       <SectionTitle>{t("faq.title")}</SectionTitle>
       <div className="space-y-3">
-        {t("faq.items").map((it) => (
+        {items.map((it) => (
           <details
             key={it.q}
             className="group rounded-2xl bg-white/70 px-5 py-4 shadow-soft ring-1 ring-rose/50 open:bg-white"
@@ -440,6 +441,7 @@ function Faq() {
 function Contact() {
   const { t } = useI18n();
   const { lang } = useI18n();
+  const {settings}=useStore();
   const hello = waLink(
     lang === "fr" ? "Bonjour b Nossa 👋" : "مرحبًا b Nossa 👋",
   );
@@ -473,7 +475,7 @@ function Contact() {
             className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-medium text-wine shadow-soft transition hover:bg-cream"
           >
             <Icon name="phone" className="h-5 w-5" />
-            <span dir="ltr">{SITE.phone.number}</span>
+            <span dir="ltr">{settings.phone_number}</span>
           </a>
         </div>
       </div>

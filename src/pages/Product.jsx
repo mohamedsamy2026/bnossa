@@ -7,13 +7,15 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { useI18n } from '../context/LangContext'
 import { useCart } from '../context/CartContext'
-import { getCategory, getProduct, products } from '../data/products'
+import { useStore } from '../context/StoreContext'
+import { logOrder } from '../lib/supabase'
 import { productOrderLink } from '../utils/whatsapp'
 import ProductCard from '../components/ProductCard'
 import { Icon, Qty, SectionTitle } from '../components/ui'
 
 export default function Product() {
   const { id } = useParams()
+  const {getProduct,getCategory,products}=useStore()
   const { t, lang, money } = useI18n()
   const { add, setOpen } = useCart()
   const [qty, setQty] = useState(1)
@@ -57,7 +59,7 @@ export default function Product() {
             <span className="ms-auto text-sm">{t('product.total')}: <b className="text-lg">{money(p.price * qty)}</b></span>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <button onClick={() => window.open(productOrderLink(lang, p, qty), '_blank', 'noopener')}
+            <button onClick={() => { window.open(productOrderLink(lang, p, qty), '_blank', 'noopener'); logOrder('direct',[{p,qty}]) }}
               className="flex flex-1 items-center justify-center gap-2 rounded-full bg-mauve px-6 py-3.5 font-medium text-white shadow-soft transition hover:bg-wine">
               <Icon name="whatsapp" className="h-5 w-5" />{t('product.order')}
             </button>

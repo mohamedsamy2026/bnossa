@@ -3,16 +3,17 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useI18n } from "../context/LangContext";
 import { useCart } from "../context/CartContext";
 import { SITE } from "../config/site";
-import { categories } from "../data/products";
+import { useStore } from "../context/StoreContext";
 import { searchProducts } from "../utils/search";
 import { Icon, Yarn } from "./ui";
 import plate from '../assets/logo-plate.webp'
 
 export function Socials({ className = "", size = "h-5 w-5" }) {
+  const {socials,settings}=useStore();
+  const entries = settings.imported ? socials.map(x=>[x.platform,x.url]) : Object.entries(SITE.socials);
   return (
     <div className={`flex items-center gap-4 ${className}`}>
-      {["tiktok", "instagram", "youtube"].map((n) => {
-        const url = SITE.socials[n];
+      {entries.map(([n,url]) => {
         return url ? (
           <a
             key={n}
@@ -65,7 +66,8 @@ function SearchBox({ className = "" }) {
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
-  const results = useMemo(() => (q.trim() ? searchProducts(q) : []), [q]);
+  const {products,categories}=useStore();
+  const results = useMemo(() => (q.trim() ? searchProducts(q,products,categories) : []), [q,products,categories]);
 
   useEffect(() => {
     const h = (e) =>
@@ -150,13 +152,14 @@ function SearchBox({ className = "" }) {
 
 export function Logo({ className = "w-32" }) {
   const { t } = useI18n();
+  const {settings}=useStore();
   return (
     <Link
       to="/"
       aria-label="b Nossa"
       className={`flex flex-col items-center leading-none text-wine  ${className}`}
     >
-      <img src={plate} alt="" />
+      <img src={settings.logo_url || plate} alt="" />
       {/* <span className="flex items-center gap-2">
         <span className="font-brand text-5xl sm:text-6xl" dir="ltr">
           b Nossa
@@ -172,6 +175,7 @@ export function Logo({ className = "w-32" }) {
 }
 
 export default function Header() {
+  const {categories}=useStore();
   const { t, toggle, lang } = useI18n();
   const { count, setOpen } = useCart();
   const { pathname } = useLocation();
