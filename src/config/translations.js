@@ -5,14 +5,19 @@ export const translations = {
     topbar: { love: 'صُنع بحب', creations: 'إبداعات كروشيه', delivery: 'توصيل سريع' },
     nav: { home: 'الرئيسية', shop: 'المتجر', about: 'من نحن', how: 'كيف نعمل', contact: 'تواصل معنا', all: 'كل المنتجات', menu: 'القائمة' },
     search: { placeholder: 'ابحث عن شنطة...', none: 'مفيش نتائج. جرّبي كلمة تانية.', all: 'عرض كل النتائج' },
+
     hero: {
-      kicker: 'أكتر من مجرد كروشيه...', sub: 'صُنع يدويًا بشغف',
+      kicker: 'أكتر من مجرد كروشيه...',
+      sub: 'صُنع يدويًا بشغف',
       text: 'اكتشفي شنط الكروشيه الفريدة، مصنوعة بعناية لتضيف لمسة أناقة ودفء لإطلالتك.',
       cta: 'تسوق الآن',
+      customOrder: 'اطلب حسب رغبتك',
     },
+
     features: { quality: 'جودة عالية', love: 'صُنع بحب', gift: 'هدية مثالية', delivery: 'توصيل سريع' },
     collection: {
-      title: 'مجموعتنا', ctaText: 'اطلب حسب رغبتك', cta: 'اطلب الآن',},
+      title: 'مجموعتنا', ctaText: 'اطلب حسب رغبتك', cta: 'اطلب الآن',
+    },
     products: { title: 'منتجاتنا', all: 'الكل', empty: 'مفيش منتجات في التصنيف ده لسه. هنضيف قريب 🌸' },
     product: {
       order: 'اطلب المنتج', add: 'أضف للسلة', added: 'تمت الإضافة', readMore: 'اقرأ المزيد', qty: 'الكمية',
@@ -72,11 +77,15 @@ export const translations = {
     topbar: { love: 'Fait main avec amour', creations: 'Créations au crochet', delivery: 'Livraison rapide' },
     nav: { home: 'Accueil', shop: 'Boutique', about: 'À propos', how: 'Comment ça marche', contact: 'Contactez-nous', all: 'Tous les produits', menu: 'Menu' },
     search: { placeholder: 'Rechercher un sac...', none: 'Aucun résultat. Essayez un autre mot.', all: 'Voir tous les résultats' },
+
     hero: {
-      kicker: 'Plus que du crochet...', sub: 'Fait main avec passion',
+      kicker: 'Plus que du crochet...',
+      sub: 'Fait main avec passion',
       text: 'Découvrez nos sacs uniques au crochet, réalisés avec soin pour ajouter une touche d’élégance et de chaleur à votre style.',
       cta: 'Acheter maintenant',
+      customOrder: 'Commandez selon vos envies',
     },
+
     features: { quality: 'Qualité premium', love: 'Fait avec amour', gift: 'Cadeau idéal', delivery: 'Livraison rapide' },
     collection: { title: 'Notre collection', ctaText: 'Commandez selon vos envies', cta: 'Commander maintenant' },
     products: { title: 'Nos produits', all: 'Tous', empty: 'Pas encore de produits dans cette catégorie. Bientôt 🌸' },

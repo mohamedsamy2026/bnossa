@@ -43,6 +43,7 @@ function Hero() {
           <p className="mt-4 max-w-sm leading-relaxed text-ink/90">
             {t("hero.text")}
           </p>
+
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             {/* زر التسوق */}
             <Link
@@ -52,6 +53,19 @@ function Hero() {
               {t("hero.cta")}
               <Icon name="arrow" className="h-5 w-5" />
             </Link>
+
+            {/* زر الطلب حسب الرغبة */}
+            <a
+              href={`https://wa.me/201115083459?text=${encodeURIComponent(
+                "مرحباً، أريد طلب منتج كروشيه بتصميم خاص حسب رغبتي 🌸",
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-mauve bg-transparent px-7 py-3 font-medium text-wine transition-all duration-300 hover:-translate-y-1 hover:bg-mauve hover:text-white"
+            >
+              <Heart className="h-5 w-5" />
+              {t("hero.customOrder")}
+            </a>
           </div>
         </div>
         <div className="relative min-h-80 overflow-hidden md:min-h-[460px] md:rounded-ss-[55%_70%] md:rounded-es-[38%_30%]">
@@ -427,9 +441,7 @@ function Contact() {
   const { t } = useI18n();
   const { lang } = useI18n();
   const hello = waLink(
-    lang === "fr"
-      ? "Bonjour b Nossa 👋"
-      : "مرحبًا b Nossa 👋",
+    lang === "fr" ? "Bonjour b Nossa 👋" : "مرحبًا b Nossa 👋",
   );
   return (
     <section
