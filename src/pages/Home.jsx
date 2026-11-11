@@ -22,7 +22,7 @@ import aboutImg from "../assets/p3.jpg";
 
 function Hero() {
   const { t } = useI18n();
-  const {settings}=useStore();
+  const { settings } = useStore();
   return (
     <section className="relative overflow-hidden">
       <Branch className="absolute -start-6 top-10 hidden h-64 opacity-80 lg:block" />
@@ -57,7 +57,9 @@ function Hero() {
 
             {/* زر الطلب حسب الرغبة */}
             <a
-              href={waLink("مرحباً، أريد طلب منتج كروشيه بتصميم خاص حسب رغبتي 🌸")}
+              href={waLink(
+                "مرحباً، أريد طلب منتج كروشيه بتصميم خاص حسب رغبتي 🌸",
+              )}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-mauve bg-transparent px-7 py-3 font-medium text-wine transition-all duration-300 hover:-translate-y-1 hover:bg-mauve hover:text-white"
@@ -108,7 +110,7 @@ function Features() {
 
 function Collection() {
   const { t, lang } = useI18n();
-  const {categories}=useStore();
+  const { categories } = useStore();
 
   const whatsappMessage =
     "مرحباً، أريد طلب منتج كروشيه بتصميم خاص حسب رغبتي 🌸";
@@ -167,12 +169,14 @@ function Collection() {
 
 function Products() {
   const { t, lang, dir } = useI18n();
-  const {categories,products}=useStore();
+  const { categories, products } = useStore();
   const [cat, setCat] = useState("all");
+
   const list = useMemo(
     () => (cat === "all" ? products : products.filter((p) => p.cat === cat)),
-    [cat],
+    [cat, products],
   );
+
   const loop = list.length > 4;
   const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
@@ -412,8 +416,13 @@ function Why() {
 
 function Faq() {
   const { t, lang } = useI18n();
-  const {faqs,settings}=useStore();
-  const items = settings.imported ? faqs.map(x=>({q:lang==='fr'?(x.question_fr||x.question_ar):x.question_ar,a:lang==='fr'?(x.answer_fr||x.answer_ar):x.answer_ar})) : t("faq.items");
+  const { faqs, settings } = useStore();
+  const items = settings.imported
+    ? faqs.map((x) => ({
+        q: lang === "fr" ? x.question_fr || x.question_ar : x.question_ar,
+        a: lang === "fr" ? x.answer_fr || x.answer_ar : x.answer_ar,
+      }))
+    : t("faq.items");
   return (
     <section className="mx-auto max-w-3xl px-4 pt-20 sm:px-8">
       <SectionTitle>{t("faq.title")}</SectionTitle>
@@ -441,7 +450,7 @@ function Faq() {
 function Contact() {
   const { t } = useI18n();
   const { lang } = useI18n();
-  const {settings}=useStore();
+  const { settings } = useStore();
   const hello = waLink(
     lang === "fr" ? "Bonjour b Nossa 👋" : "مرحبًا b Nossa 👋",
   );
